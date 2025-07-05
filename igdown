@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if URL was passed
+if [ -z "$1" ]; then
+  echo "Usage: $0 <Instagram Reel URL>"
+  exit 1
+fi
+
+URL="$1"
+
+# Optional: Set download directory
+DOWNLOAD_DIR="$HOME/Downloads/instagram_reels"
+
+# Create directory if not exists
+mkdir -p "$DOWNLOAD_DIR"
+
+# Download the reel using yt-dlp
+yt-dlp --output "$DOWNLOAD_DIR/%(title).80s.%(ext)s" "$URL"
